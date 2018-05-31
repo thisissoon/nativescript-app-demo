@@ -1,0 +1,55 @@
+{
+	"name": "soon-app-demo",
+	"version": "0.0.0",
+	"description": "An example nativescript app",
+	"private": true,
+	"author": "SOON_ <dorks@thisissoon.com>",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:thisissoon/nativescript-app-demo.git"
+	},
+	"nativescript": {
+		"id": "com.thisissoon.demo",
+		"tns-android": {
+			"version": "4.1.1"
+		},
+		"tns-ios": {
+			"version": "4.1.0"
+		}
+	},
+	"scripts": {
+		"start": "npm run start:android",
+		"start:ios": "tns run ios",
+		"start:android": "tns run android",
+		"test": "echo \"No tests specified\" && exit 0",
+		"build": "npm run build:android",
+		"build:ios": "tns build ios",
+		"build:android": "tns build android"
+	},
+	"dependencies": {
+		"@angular/animations": "~5.2.0",
+		"@angular/common": "~5.2.0",
+		"@angular/compiler": "~5.2.0",
+		"@angular/core": "~5.2.0",
+		"@angular/forms": "~5.2.0",
+		"@angular/http": "~5.2.0",
+		"@angular/platform-browser": "~5.2.0",
+		"@angular/platform-browser-dynamic": "~5.2.0",
+		"@angular/router": "~5.2.0",
+		"nativescript-angular": "~5.3.0",
+		"nativescript-theme-core": "~1.0.4",
+		"reflect-metadata": "~0.1.8",
+		"rxjs": "~5.5.2",
+		"tns-core-modules": "~4.0.0",
+		"zone.js": "~0.8.2"
+	},
+	"devDependencies": {
+		"babel-traverse": "6.26.0",
+		"babel-types": "6.26.0",
+		"babylon": "6.18.0",
+		"lazy": "1.0.11",
+		"nativescript-dev-typescript": "~0.7.0",
+		"typescript": "~2.7.2"
+	}
+}
