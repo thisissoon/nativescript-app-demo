@@ -5,19 +5,47 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/node:8.11.2
     working_directory: ~/nativescript-demo
+    docker:
+      - image: runmymind/docker-android-sdk:ubuntu-standalone
     steps:
       - checkout
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-      - run: npm i --no-progress
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run:
+          name: Install node and npm
+          command: |
+            apt-get update;
+            apt-get install -y nodejs;
+            apt-get install -y npm;
+            npm i -g npm@latest;
+
+      - run:
+          name: Install npm modules
+          command: |
+            npm i -g nativescript --unsafe-perm --no-progress --ignore-scripts;
+            tns usage-reporting disable && tns error-reporting disable;
+            npm i --no-progress;
+
       - save_cache:
+          key: v1-dependencies-{{ checksum "package.json" }}
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-      - run: npm test
+
+      - run:
+          name: Build setup
+          command: |
+            $ANDROID_HOME/tools/bin/sdkmanager "tools" "platform-tools" "platforms;android-26" "build-tools;26.0.2" "extras;android;m2repository" "extras;google;m2repository" > /dev/null;
+            echo $ANDROID_KEY_BASE64 | base64 -d > ./key.jks;
+            unset ANDROID_KEY_BASE64;
+
+      - run:
+          name: Build signed app
+          command: tns build android --release --key-store-path ./key.jks --key-store-password "${KEY_STORE_PASSWORD}" --key-store-alias "${KEY_STORE_ALIAS}" --key-store-alias-password "${KEY_STORE_ALIAS_PASSWORD}" --copy-to ./dist/soon-app-demo.apk
+
+      - store_artifacts:
+          path: ./dist
