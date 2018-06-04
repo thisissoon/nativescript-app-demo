@@ -25,7 +25,8 @@
 		"test": "echo \"No tests specified\" && exit 0",
 		"build": "npm run build:android",
 		"build:ios": "tns build ios",
-		"build:android": "tns build android"
+		"build:android": "tns build android",
+		"release": "standard-version -a"
 	},
 	"dependencies": {
 		"@angular/animations": "~5.2.0",
@@ -48,8 +49,20 @@
 		"babel-traverse": "6.26.0",
 		"babel-types": "6.26.0",
 		"babylon": "6.18.0",
+		"cz-conventional-changelog": "^2.1.0",
 		"lazy": "1.0.11",
 		"nativescript-dev-typescript": "~0.7.0",
+		"standard-version": "^4.4.0",
 		"typescript": "~2.7.2"
-	}
+	},
+	"config": {
+		"commitizen": {
+			"path": "./node_modules/cz-conventional-changelog"
+		}
+	},
+	"standard-version": {
+    "scripts": {
+      "postbump": "node update-version.js && git add app/App_Resources/Android/AndroidManifest.xml"
+    }
+  }
 }
