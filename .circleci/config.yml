@@ -45,7 +45,9 @@ jobs:
 
       - run:
           name: Build signed app
-          command: tns build android --release --key-store-path ./key.jks --key-store-password "${KEY_STORE_PASSWORD}" --key-store-alias "${KEY_STORE_ALIAS}" --key-store-alias-password "${KEY_STORE_ALIAS_PASSWORD}" --copy-to ./dist/soon-app-demo.apk
+          command: |
+            rm -rf platforms && tns platform add android && cp ./app/App_Resources/Android/gradle.properties ./platforms/android/gradle.properties;
+            tns build android --release --key-store-path ./key.jks --key-store-password "${KEY_STORE_PASSWORD}" --key-store-alias "${KEY_STORE_ALIAS}" --key-store-alias-password "${KEY_STORE_ALIAS_PASSWORD}" --copy-to ./dist/soon-app-demo.apk;
 
       - store_artifacts:
           path: ./dist
