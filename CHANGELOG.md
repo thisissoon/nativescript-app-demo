@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.0.1-alpha.5"></a>
+## [0.0.1-alpha.5](https://github.com/thisissoon/nativescript-app-demo/compare/v0.0.1-alpha.4...v0.0.1-alpha.5) (2018-06-05)
+
+
+### Bug Fixes
+
+* another fix for app crashing ([583074d](https://github.com/thisissoon/nativescript-app-demo/commit/583074d))
+
+
+
 <a name="0.0.1-alpha.4"></a>
 ## [0.0.1-alpha.4](https://github.com/thisissoon/nativescript-app-demo/compare/v0.0.1-alpha.3...v0.0.1-alpha.4) (2018-06-05)
 
