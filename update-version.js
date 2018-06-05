@@ -2,6 +2,7 @@
 
 (function() {
   const fs = require('fs');
+  // @ts-ignore
   const pkg = require('./package.json');
 
   console.log('updating version numbers in AndroidManifest.xml...');
