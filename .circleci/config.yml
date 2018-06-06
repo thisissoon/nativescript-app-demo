@@ -57,6 +57,7 @@ jobs:
       - run:
           name: Publish app
           command: |
+            PATH=${PATH}:/opt/node/bin
             node ./scripts/upload-package.js
 
       - store_artifacts:
