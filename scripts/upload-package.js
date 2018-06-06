@@ -5,7 +5,7 @@
   const fs = require('fs');
   const path = require('path');
   // @ts-ignore
-  const pkg = require('./package.json');
+  const pkg = require('../package.json');
 
   console.log('Beginning app publishing');
 
