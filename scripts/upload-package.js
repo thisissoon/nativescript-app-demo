@@ -10,8 +10,8 @@
   console.log('Beginning app publishing');
 
   const fileName = 'soon-app-demo.apk';
-  const filePath = path.join(__dirname, 'dist', fileName);
-  const keyPath = path.join(__dirname, 'jwt.json');
+  const filePath = path.join(__dirname, '..', 'dist', fileName);
+  const keyPath = path.join(__dirname, '..', 'jwt.json');
   const packageName = 'com.thisissoon.demo';
   const editId = `${new Date().getTime()}`;
   const scopes = 'https://www.googleapis.com/auth/androidpublisher';
