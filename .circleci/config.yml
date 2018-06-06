@@ -7,30 +7,19 @@ jobs:
   build:
     working_directory: ~/nativescript-demo
     docker:
-      - image: runmymind/docker-android-sdk:ubuntu-standalone
+      - image: circleci/android:api-27-node8-alpha
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-
-      - run:
-          name: Install node and npm
-          environment:
-            NODE_VERSION: 10.3.0
-          command: |
-            wget -q http://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.gz;
-            tar -xzf node-v${NODE_VERSION}-linux-x64.tar.gz;
-            mv node-v${NODE_VERSION}-linux-x64 /opt/node
-            rm node-v${NODE_VERSION}-linux-x64.tar.gz
+      # - restore_cache:
+      #     keys:
+      #       - v1-dependencies-{{ checksum "package.json" }}
+      #       # fallback to using the latest cache if no exact match is found
+      #       - v1-dependencies-
 
       - run:
           name: Install npm modules
           command: |
-            PATH=${PATH}:/opt/node/bin
-            npm i -g nativescript --unsafe-perm --no-progress --ignore-scripts;
+            sudo npm i -g nativescript --unsafe-perm --no-progress --ignore-scripts;
             tns usage-reporting disable && tns error-reporting disable;
             npm i --no-progress;
 
@@ -42,22 +31,23 @@ jobs:
       - run:
           name: Build setup
           command: |
-            PATH=${PATH}:/opt/node/bin
-            $ANDROID_HOME/tools/bin/sdkmanager "tools" "platform-tools" "platforms;android-26" "build-tools;26.0.2" "extras;android;m2repository" "extras;google;m2repository" > /dev/null;
             echo $ANDROID_KEY_BASE64 | base64 -d > ./key.jks;
             echo $PLAY_STORE_JWT > ./jwt.json;
-            rm -rf platforms && tns platform add android && cp ./app/App_Resources/Android/gradle.properties ./platforms/android/gradle.properties;
+            rm -rf platforms;
+            tns platform add android;
+            cp ./app/App_Resources/Android/gradle.properties ./platforms/android/gradle.properties;
 
       - run:
           name: Build signed app
+          environment:
+            ANDROID_KEY_BASE64: ""
+            PLAY_STORE_JWT: ""
           command: |
-            PATH=${PATH}:/opt/node/bin
             tns build android --release --key-store-path ./key.jks --key-store-password "${KEY_STORE_PASSWORD}" --key-store-alias "${KEY_STORE_ALIAS}" --key-store-alias-password "${KEY_STORE_ALIAS_PASSWORD}" --copy-to ./dist/soon-app-demo.apk;
 
       - run:
           name: Publish app
           command: |
-            PATH=${PATH}:/opt/node/bin
             node ./scripts/upload-package.js
 
       - store_artifacts:

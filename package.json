@@ -5,6 +5,7 @@
   "private": true,
   "author": "SOON_ <dorks@thisissoon.com>",
   "license": "MIT",
+  "main": "app/main.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:thisissoon/nativescript-app-demo.git"
