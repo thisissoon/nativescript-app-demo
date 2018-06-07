@@ -12,11 +12,11 @@
   },
   "nativescript": {
     "id": "com.thisissoon.demo",
-    "tns-ios": {
-      "version": "4.1.0"
-    },
     "tns-android": {
       "version": "4.1.2"
+    },
+    "tns-ios": {
+      "version": "4.1.0"
     }
   },
   "scripts": {
@@ -54,6 +54,7 @@
     "cz-conventional-changelog": "^2.1.0",
     "googleapis": "^31.0.2",
     "lazy": "1.0.11",
+    "nativescript-dev-sass": "^1.6.0",
     "nativescript-dev-typescript": "~0.7.1",
     "standard-version": "^4.4.0",
     "typescript": "~2.7.2"

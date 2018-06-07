@@ -1,0 +1,13 @@
+<ActionBar [title]="item.name" class="action-bar"></ActionBar>
+
+<GridLayout rows="auto *" class="page">
+  <GridLayout row="0" rows="auto auto">
+
+    <GridLayout row="0" rowSpan="2" rows="auto auto auto" columns="* auto" verticalAlignment="bottom" class="p-t-25">
+      <Image row="0" col="0" [src]="'https://picsum.photos/400/400?image=' + (item.id + 500)" height="80" width="80" class="m-b-20 img-circle" horizontalAlignment="center"></Image>
+      <Label row="1" col="0" [text]="item.name" class="text-left font" textWrap="true" horizontalAlignment="center" color="#fff"></Label>
+      <Label row="2" col="0" [text]="item.role" class="text-left font" textWrap="true" horizontalAlignment="center" color="#999"></Label>
+    </GridLayout>
+  </GridLayout>
+
+</GridLayout>

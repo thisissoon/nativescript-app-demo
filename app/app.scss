@@ -1,0 +1,21 @@
+@import "~nativescript-theme-core/scss/dark";
+@import "~nativescript-theme-core/scss/index";
+
+@font-face {
+  font-family: "DIN Next Slab Pro";
+  src: url("/fonts/DINNextSlabPro-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+}
+
+.font {
+  font-family: "DIN Next Slab Pro";
+}
+
+.list-group-item {
+  background-color: $ab-background;
+}
+
+.img-circle {
+  border-radius: 50%;
+}

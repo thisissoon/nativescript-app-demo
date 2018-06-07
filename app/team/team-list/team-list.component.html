@@ -1,0 +1,14 @@
+<ActionBar title="SOON_" class="action-bar"></ActionBar>
+<StackLayout class="page">
+  <ListView  [items]="items" class="list-group" separatorColor="#303030">
+    <ng-template let-item="item">
+      <StackLayout orientation="horizontal" class="list-group-item" [nsRouterLink]="['/team', item.id]">
+        <Image row="0" col="0" rowSpan="2" height="80" width="80"  [src]="'https://picsum.photos/200/200?image=' + (item.id + 500)" class="thumb img-circle p-16"></Image>
+        <GridLayout class="list-group-item" rows="auto *" columns="*">
+          <Label row="0" col="0" [text]="item.name" class="list-group-item-heading font font-weight-bold"></Label>
+          <Label row="1" col="0" class="list-group-item-text font" [text]="item.role"></Label>
+        </GridLayout>
+      </StackLayout>
+    </ng-template>
+  </ListView>
+</StackLayout>
