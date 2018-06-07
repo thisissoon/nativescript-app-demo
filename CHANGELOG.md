@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.0"></a>
+# [1.0.0-beta.0](https://github.com/thisissoon/nativescript-app-demo/compare/v0.0.1-alpha.10...v1.0.0-beta.0) (2018-06-07)
+
+
+### Features
+
+* **team:** added team module and data ([0e833a2](https://github.com/thisissoon/nativescript-app-demo/commit/0e833a2))
+
+
+
 <a name="0.0.1-alpha.10"></a>
 ## [0.0.1-alpha.10](https://github.com/thisissoon/nativescript-app-demo/compare/v0.0.1-alpha.9...v0.0.1-alpha.10) (2018-06-06)
 
