@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.4"></a>
+# [1.0.0-beta.4](https://github.com/thisissoon/nativescript-app-demo/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2018-06-07)
+
+
+### Bug Fixes
+
+* **android:** app name ([6d97790](https://github.com/thisissoon/nativescript-app-demo/commit/6d97790))
+
+
+
 <a name="1.0.0-beta.3"></a>
 # [1.0.0-beta.3](https://github.com/thisissoon/nativescript-app-demo/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2018-06-07)
 
