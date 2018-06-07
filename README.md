@@ -6,6 +6,7 @@ An example nativescript app
 
 ```bash
 npm i -g nativescript@latest
+npm i
 ```
 
 ## Run
