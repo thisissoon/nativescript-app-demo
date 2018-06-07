@@ -43,7 +43,7 @@ jobs:
             ANDROID_KEY_BASE64: ""
             PLAY_STORE_JWT: ""
           command: |
-            tns build android --release --key-store-path ./key.jks --key-store-password "${KEY_STORE_PASSWORD}" --key-store-alias "${KEY_STORE_ALIAS}" --key-store-alias-password "${KEY_STORE_ALIAS_PASSWORD}" --copy-to ./dist/soon-app-demo.apk;
+            tns build android --release --clean --key-store-path ./key.jks --key-store-password "${KEY_STORE_PASSWORD}" --key-store-alias "${KEY_STORE_ALIAS}" --key-store-alias-password "${KEY_STORE_ALIAS_PASSWORD}" --copy-to ./dist/soon-app-demo.apk;
 
       - run:
           name: Publish app

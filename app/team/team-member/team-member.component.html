@@ -1,4 +1,6 @@
-<ActionBar [title]="item.name" class="action-bar"></ActionBar>
+<ActionBar [title]="item.name" class="action-bar">
+  <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" (tap)="onNavBtnTap()"></NavigationButton>
+</ActionBar>
 
 <GridLayout rows="auto *" class="page">
   <GridLayout row="0" rows="auto auto">

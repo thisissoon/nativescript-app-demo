@@ -4,7 +4,6 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { Team } from '~/team/models/team.model';
-import { teamMembers } from '~/team/data/team-data';
 
 @Component({
   moduleId: module.id,

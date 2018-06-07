@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -14,7 +14,11 @@ export class TeamMemberComponent implements OnInit, OnDestroy {
   item: TeamMember;
   ngUnsubscribe$ = new Subject<void>();
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
+
+  onNavBtnTap() {
+    this.router.navigate(['/team']);
+  }
 
   ngOnInit() {
     this.route.data
