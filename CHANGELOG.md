@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-beta.7"></a>
+# [1.0.0-beta.7](https://github.com/thisissoon/nativescript-app-demo/compare/v1.0.0-beta.6...v1.0.0-beta.7) (2018-06-08)
+
+
+### Bug Fixes
+
+* **android:** app crashing due to typescript files not being compiled ([0e929b2](https://github.com/thisissoon/nativescript-app-demo/commit/0e929b2))
+
+
+
 <a name="1.0.0-beta.6"></a>
 # [1.0.0-beta.6](https://github.com/thisissoon/nativescript-app-demo/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2018-06-07)
 
