@@ -5,7 +5,6 @@
   "private": true,
   "author": "SOON_ <dorks@thisissoon.com>",
   "license": "MIT",
-  "main": "app/main.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:thisissoon/nativescript-app-demo.git"
@@ -54,6 +53,7 @@
     "cz-conventional-changelog": "^2.1.0",
     "googleapis": "^31.0.2",
     "lazy": "1.0.11",
+    "nativescript": "^4.1.0",
     "nativescript-dev-sass": "^1.6.0",
     "nativescript-dev-typescript": "~0.7.1",
     "standard-version": "^4.4.0",

@@ -19,9 +19,8 @@ jobs:
       - run:
           name: Install npm modules
           command: |
-            sudo npm i -g nativescript --unsafe-perm --no-progress --ignore-scripts;
-            tns usage-reporting disable && tns error-reporting disable;
-            npm i --no-progress;
+            npm i --no-progress --ignore-scripts;
+            ./node_modules/.bin/tns usage-reporting disable && ./node_modules/.bin/tns error-reporting disable;
 
       - save_cache:
           key: v1-dependencies-{{ checksum "package.json" }}
@@ -34,7 +33,7 @@ jobs:
             echo $ANDROID_KEY_BASE64 | base64 -d > ./key.jks;
             echo $PLAY_STORE_JWT > ./jwt.json;
             rm -rf platforms;
-            tns platform add android;
+            ./node_modules/.bin/tns platform add android;
             cp ./app/App_Resources/Android/gradle.properties ./platforms/android/gradle.properties;
 
       - run:
@@ -43,7 +42,7 @@ jobs:
             ANDROID_KEY_BASE64: ""
             PLAY_STORE_JWT: ""
           command: |
-            tns build android --release --clean --key-store-path ./key.jks --key-store-password "${KEY_STORE_PASSWORD}" --key-store-alias "${KEY_STORE_ALIAS}" --key-store-alias-password "${KEY_STORE_ALIAS_PASSWORD}" --copy-to ./dist/soon-app-demo.apk;
+            ./node_modules/.bin/tns build android --release --clean --key-store-path ./key.jks --key-store-password "${KEY_STORE_PASSWORD}" --key-store-alias "${KEY_STORE_ALIAS}" --key-store-alias-password "${KEY_STORE_ALIAS_PASSWORD}" --copy-to ./dist/soon-app-demo.apk;
 
       - run:
           name: Publish app
