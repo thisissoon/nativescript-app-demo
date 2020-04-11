@@ -1,55 +1,17 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
-version: 2
+version: 2.1
+orbs:
+  node: circleci/node@1.1.6
 jobs:
-  build:
-    working_directory: ~/nativescript-demo
-    docker:
-      - image: circleci/android:api-27-node8-alpha
+  build-and-test:
+    executor:
+      name: node/default
     steps:
       - checkout
-
-      - run:
-          name: Install npm modules
-          command: |
-            sudo npm i -g nativescript --ignore-scripts --unsafe-perm --no-progress;
-            npm i --no-progress;
-            tns usage-reporting disable && tns error-reporting disable;
-
-      - run:
-          name: Build setup
-          command: |
-            echo $ANDROID_KEY_BASE64 | base64 -d > ./key.jks;
-            echo $PLAY_STORE_JWT > ./jwt.json;
-            rm -rf platforms;
-            tns platform add android;
-            cp ./app/App_Resources/Android/gradle.properties ./platforms/android/gradle.properties;
-
-      - run:
-          name: Build signed app
-          environment:
-            ANDROID_KEY_BASE64: ""
-            PLAY_STORE_JWT: ""
-          command: |
-            tns build android --release --key-store-path ./key.jks --key-store-password "${KEY_STORE_PASSWORD}" --key-store-alias "${KEY_STORE_ALIAS}" --key-store-alias-password "${KEY_STORE_ALIAS_PASSWORD}" --copy-to ./dist/soon-app-demo.apk;
-
-      - run:
-          name: Publish app
-          command: |
-            node ./scripts/upload-package.js
-
-      - store_artifacts:
-          path: ./dist
-
+      - node/with-cache:
+          steps:
+            - run: npm install
+            - run: npm test
 workflows:
-  version: 2
-  build_release:
-    jobs:
-      - build:
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /.*/
+    build-and-test:
+      jobs:
+        - build-and-test
